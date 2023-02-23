@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: pangolin-db
+    env_file:
+      - ./backend/.env
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+
+  backend:
+    container_name: pangolin-backend
+    build: ./backend
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+
+  frontend:
+    container_name: pangolin-frontend
+    build: ./frontend
+    restart: always
+    ports:
+      - "4200:4200"
+
+volumes:
+  mongodb:

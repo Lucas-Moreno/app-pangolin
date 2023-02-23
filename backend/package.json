@@ -1,0 +1,30 @@
+{
+  "name": "app-pangolin",
+  "version": "1.0.0",
+  "description": "# Back-end :",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "docker": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucas-Moreno/app-pangolin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucas-Moreno/app-pangolin/issues"
+  },
+  "homepage": "https://github.com/Lucas-Moreno/app-pangolin#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.0",
+    "nodemon": "^2.0.20",
+    "process": "^0.11.10"
+  }
+}
