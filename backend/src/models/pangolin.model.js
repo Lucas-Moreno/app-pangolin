@@ -4,7 +4,9 @@ const bcrypt = require('bcrypt');
 const PangolinSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  role: { type: String, enum: ['Guerrier', 'Alchimiste', 'Sorcier', 'Espion', 'Enchanteur'], default: 'Guerrier' },
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pangolin' }]
 });
 
 PangolinSchema.methods.isPasswordCorrect = async function (password) {

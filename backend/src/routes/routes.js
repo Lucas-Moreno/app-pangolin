@@ -41,8 +41,13 @@ module.exports = (app) => {
    * PANGOLIN
    */
 
+  app.get('/pangolins', pangolinController.getPangolins);
+  app.get('/pangolins/:id', authMiddleware, pangolinController.getPangolinById);
   app.get('/me', authMiddleware, pangolinController.getInfoPangolin);
   app.put('/me', authMiddleware, pangolinController.updateProfile);
+  app.put('/me/role', authMiddleware, pangolinController.updateRole);
+  app.post('/me/friends/:id', authMiddleware, pangolinController.addFriend);
+  app.delete('/me/friends/:id', authMiddleware, pangolinController.deleteFriend);
 
   /**
    * 404 NOT FOUND
