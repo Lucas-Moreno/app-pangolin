@@ -17,3 +17,6 @@ mongoose.connect(
     }
   }
 )
+
+
+require("./pangolin.model.js")

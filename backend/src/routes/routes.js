@@ -1,5 +1,6 @@
 module.exports = (app) => {
   const mongoose = require("mongoose")
+  const authController = require('../controllers/auth.controller');
 
   /**
    * TEST API
@@ -26,6 +27,13 @@ module.exports = (app) => {
       }
     )
   })
+
+  /**
+   * AUTHENTIFICATION
+   */
+
+  app.post('/signup', authController.signup);
+  app.post('/signin', authController.signin);
 
   /**
    * 404 NOT FOUND
