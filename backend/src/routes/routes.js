@@ -42,6 +42,7 @@ module.exports = (app) => {
    */
 
   app.get('/me', authMiddleware, pangolinController.getInfoPangolin);
+  app.put('/me', authMiddleware, pangolinController.updateProfile);
 
   /**
    * 404 NOT FOUND
