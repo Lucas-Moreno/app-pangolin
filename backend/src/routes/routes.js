@@ -34,6 +34,7 @@ module.exports = (app) => {
 
   app.post('/signup', authController.signup);
   app.post('/signin', authController.signin);
+  app.post('/logout', authController.logout);
 
   /**
    * 404 NOT FOUND

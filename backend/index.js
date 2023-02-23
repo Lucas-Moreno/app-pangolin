@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const process = require("process")
+const cookieParser = require('cookie-parser')
 
 require("dotenv").config()
 
@@ -23,6 +24,8 @@ app.use(
 
 // parse json request body
 app.use(express.json())
+
+app.use(cookieParser());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }))
