@@ -1,7 +1,8 @@
 module.exports = (app) => {
   const mongoose = require("mongoose")
   const authController = require('../controllers/auth.controller');
-
+  const authMiddleware = require('../middleware/auth.middleware');
+  const pangolinController = require('../controllers/pangolin.controller');
   /**
    * TEST API
    */
@@ -35,6 +36,12 @@ module.exports = (app) => {
   app.post('/signup', authController.signup);
   app.post('/signin', authController.signin);
   app.post('/logout', authController.logout);
+
+  /**
+   * PANGOLIN
+   */
+
+  app.get('/me', authMiddleware, pangolinController.getInfoPangolin);
 
   /**
    * 404 NOT FOUND

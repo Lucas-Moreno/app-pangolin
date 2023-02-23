@@ -36,7 +36,7 @@ const signin = async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const token = jwt.sign({ email: pangolin.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: pangolin._id, email: pangolin.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.cookie('jwt', token, { httpOnly: true, maxAge: 3600000 });
     res.status(200).json({ email: pangolin.email, token });
 
