@@ -1,0 +1,53 @@
+.signin-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container-input {
+  width:100%;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom:20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  flex:0.4;
+  display:flex;
+  justify-content: flex-start;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex:0.6;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width:100%;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
