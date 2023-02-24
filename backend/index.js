@@ -8,7 +8,7 @@ require("dotenv").config()
 
 // set port, listen for requestsxs
 const PORT = process.env.PORT
-const FRONT_URL = process.env.PORT
+const FRONT_URL = process.env.FRONT_URL
 
 const app = express()
 
@@ -21,6 +21,7 @@ app.use(
     credentials: true,
   })
 )
+
 
 // parse json request body
 app.use(express.json())
