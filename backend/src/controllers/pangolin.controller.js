@@ -31,7 +31,8 @@ const getPangolinById = async (req, res) => {
 };
 
 const getInfoPangolin = async (req, res) => {
-  const pangolin = req.pangolin;
+  let pangolin = req.pangolin;
+  pangolin = await Pangolin.populate(pangolin, { path: 'friends' });
   res.json(pangolin);
 };
 
