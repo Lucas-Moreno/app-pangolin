@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Pangolin = mongoose.model("Pangolin")
-var bcrypt = require("bcrypt")
+var bcrypt = require("bcryptjs")
 
 const getPangolins = async (req, res) => {
   try {
