@@ -1,0 +1,77 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.btn-add-friends {
+  width:50px !important;
+  background-color:green !important;
+}
+
+.btn-delete-friends {
+  width:80px !important;
+  background-color:red !important;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffa500;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width:200px;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff8c00;
+}
+
+.container-form {
+  display:flex;
+  flex:1;
+}
+.container-left {
+  flex: 0.5;
+  display:flex;
+  flex-direction: column;
+}
+
+.left-col {
+  padding-right: 20px;
+}
+
+.right-col {
+  flex: 0.5;
+  padding-left: 20px;
+}
+
+.ul-right {
+  padding-left:0px;
+}
+.ul-row {
+  margin-bottom:10px;
+}

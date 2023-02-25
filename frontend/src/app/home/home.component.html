@@ -1,1 +1,59 @@
-<p>home works!</p>
+<div class="container-form">
+  <div class="container-left">
+    <h2>Modification du Profil :</h2>
+    <div class="left-col">
+      <form [formGroup]="formProfile">
+        <label>
+          Nom:
+          <input type="text" formControlName="name" />
+        </label>
+        <label>
+          Email:
+          <input type="email" formControlName="email" />
+        </label>
+        <label>
+          Mot de passe:
+          <input type="password" formControlName="password" />
+        </label>
+        <button type="submit" (click)="onProfileFormSubmit()">Enregistrer</button>
+      </form>
+    </div>
+    <div class="left-col">
+      <h2>Votre rôle est : {{ formRole.value.role }}</h2>
+      <h3>Vous pouvez changez votre rôle içi :</h3>
+      <form [formGroup]="formRole">
+        <label>
+          Rôle:
+          <select formControlName="role">
+            <option value="Guerrier">Guerrier</option>
+            <option value="Enchanteur">Enchanteur</option>
+            <option value="Espion">Espion</option>
+            <option value="Sorcier">Sorcier</option>
+            <option value="Alchimiste">Alchimiste</option>
+          </select>
+        </label>
+        <button type="submit" (click)="onRoleFormSubmit()">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="right-col">
+      <h2>Liste de tout les pangolins :</h2>
+      <ul class="ul-right">
+        <div class="ul-row" *ngFor="let pangolin of pangolinData">
+          {{ pangolin.name }} - {{ pangolin.role }}
+          <button class="btn-add-friends" type="submit" (click)="onFriendsFormSubmit(pangolin._id)">add</button>
+        </div>
+      </ul>
+    </div>
+    <div class="right-col">
+      <h2>Liste de mes amis pangolins :</h2>
+      <ul class="ul-right">
+        <div class="ul-row" *ngFor="let friend of friends">
+          {{ friend.name }} - {{ friend.role }}
+          <button class="btn-delete-friends" type="submit" (click)="onFriendsFormDelete(friend._id)">delete</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
