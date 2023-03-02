@@ -10,6 +10,7 @@ interface ApiResponse {
 interface ProfileResponse {
   name: string;
   email: string;
+  password: string;
   role: string;
   friend: string[];
   friends: string[];
@@ -27,9 +28,11 @@ export class HomeComponent {
   formProfile: FormGroup;
   formRole: FormGroup;
   formFriends: FormGroup;
+  formAddFriends: FormGroup;
   profileData: any;
   pangolinData: any;
   friends: any;
+
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
@@ -45,6 +48,12 @@ export class HomeComponent {
 
     this.formFriends = this.fb.group({
       friends: ''
+    });
+
+    this.formAddFriends = this.fb.group({
+      name: '',
+      email: '',
+      password: ''
     });
 
   }
@@ -132,6 +141,21 @@ export class HomeComponent {
           (error: any) => console.error(error)
         );
     }
+  }
+
+  onAddFriends() {
+    this.http.post<ProfileResponse>('http://localhost:3000/addEmail', { name: this.formAddFriends.value.name, email: this.formAddFriends.value.email, password: this.formAddFriends.value.password }, { withCredentials: true })
+      .subscribe(
+        (response: ProfileResponse) => {
+          this.profileData = response;
+          this.formAddFriends.patchValue({
+            name: response.name,
+            email: response.email,
+            password: response.password
+          });
+        },
+        (error: any) => console.error(error)
+      );
   }
 
 }

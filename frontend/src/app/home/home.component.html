@@ -55,5 +55,23 @@
         </div>
       </ul>
     </div>
+    <div class="signin-container">
+      <h2>Ajouter un amis directement</h2>
+      <form [formGroup]="formAddFriends">
+        <div class="container-input">
+          <label for="email">Nom du Pangolin:</label>
+          <input type="name" id="name" name="name" formControlName="name" required>
+        </div>
+        <div class="container-input">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" formControlName="email" required>
+        </div>
+        <div class="container-input">
+          <label for="password">Mot de passe:</label>
+          <input type="password" id="password" name="password" formControlName="password" required>
+        </div>
+        <button type="submit" (click)="onAddFriends()">Ajouter un amis directement</button>
+      </form>
+    </div>
   </div>
 </div>

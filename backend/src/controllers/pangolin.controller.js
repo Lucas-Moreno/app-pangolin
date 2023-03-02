@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const Pangolin = mongoose.model("Pangolin")
 var bcrypt = require("bcryptjs")
+const { registerNewPangolin, addNewFriend } = require('../function/function')
 
 const getPangolins = async (req, res) => {
   try {
@@ -95,19 +96,13 @@ const addFriend = async (req, res) => {
     const pangolin = req.pangolin;
     const friendId = req.params.id;
 
-    const friend = await Pangolin.findById(friendId);
-    if (!friend) {
-      return res.status(404).json({ message: 'Friend not found' });
+    const { success } = await addNewFriend(friendId, pangolin)
+
+    if (success) {
+      res.status(200).json({ message: 'Friend added successfully' });
+    } else {
+      res.status(500).json({ message: 'Friend not added' });
     }
-
-    if (pangolin.friends.includes(friendId)) {
-      return res.status(400).json({ message: 'Friend already added' });
-    }
-
-    pangolin.friends.push(friendId);
-    await pangolin.save();
-
-    res.status(200).json({ message: 'Friend added successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -139,4 +134,30 @@ const deleteFriend = async (req, res) => {
   }
 };
 
-module.exports = { getPangolins, getPangolinById, getInfoPangolin, updateProfile, updateRole, addFriend, deleteFriend }
+const addEmail = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const { id, success } = await registerNewPangolin(name, email, password);
+
+    if (success) {
+      try {
+        const pangolin = req.pangolin;
+        const { success } = await addNewFriend(id, pangolin);
+        if (success) {
+          res.status(200).json({ message: 'Friend added successfully' });
+        } else {
+          res.status(500).json({ message: 'Friend not added' });
+        }
+      } catch (e) {
+        res.status(500).json({ message: 'Erreur lors de l\'ajout d\amis' });
+      }
+    }
+
+  } catch (error) {
+    console.log('hello', error)
+    res.status(500).json({ message: 'Erreur lors de l\'enregistrement de l\'e-mail' });
+  }
+};
+
+module.exports = { getPangolins, getPangolinById, getInfoPangolin, updateProfile, updateRole, addFriend, deleteFriend, addEmail }

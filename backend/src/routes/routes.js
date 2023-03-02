@@ -49,6 +49,8 @@ module.exports = (app) => {
   app.post('/me/friends/:id', authMiddleware, pangolinController.addFriend);
   app.delete('/me/friends/:id', authMiddleware, pangolinController.deleteFriend);
 
+  app.post('/addEmail', authMiddleware, pangolinController.addEmail);
+
   /**
    * 404 NOT FOUND
    */
